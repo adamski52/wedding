@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+
+$icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
+
+$screen-xs-min: 320px;
+$screen-sm-min: 480px;
+$screen-md-min: 768px;
+$screen-lg-min: 992px;
+
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+
+@mixin make-links($primary, $secondary) {
+  a,
+  a:link,
+  a:visited {
+    color: $primary;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 3px double $primary;
+  }
+
+  a:hover,
+  a:active,
+  a:focus {
+    color: $secondary;
+    text-decoration: none;
+    background: $primary;
+  }
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Dosis|Quicksand');
+
+@font-face {
+  font-family: 'xiomararegular';
+  src: url('assets/fonts/xiomara/xiomara-script-webfont.woff2') format('woff2'),
+  url('assets/fonts/xiomara/xiomara-script-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$theme-font-secondary: "Dosis";
+$theme-font-primary: "Quicksand";
+$theme-font-accent: 'xiomararegular', cursive;
+
+.jna--text-accent {
+  font-family: $theme-font-accent;
+}
+
+.jna--text-secondary {
+  font-family: $theme-font-secondary;
+}
+
+$grid-gutter-width: 0;
+
+
+$min-section-height: 700px;
+
+$spacing-smallest: 0;
+$spacing-smaller: 3px;
+$spacing-small: 5px;
+$spacing-medium: 10px;
+$spacing-large: 20px;
+$spacing-larger: 40px;
+$spacing-largest: 80px;
+
+$sizing-large: 50px;
+$sizing-medium: 20px;
+$sizing-smallest: 0;
+$sizing-smaller: 1px;
+$sizing-small: 3px;
+
+$theme-global-primary: #d6fbe6;
+$theme-global-primary-dark: #71a15d;
+$theme-global-primary-darker: #507241;
+
+$theme-global-secondary: #f4cfcb;
+$theme-global-secondary-dark: #f49ca4;
+$theme-global-secondary-darker: #d66a7e;
+
+
+$theme-global-darkest: #000;
+$theme-global-darker: #3A4049;
+$theme-global-lightest: #fff;
+$theme-global-light: #ccc;
+
+$theme-global-section-shadow: rgba($theme-global-darkest, .5) 0 0 $sizing-large;
+
+$theme-font-size-base: 16px;
+$theme-font-size-medium: $theme-font-size-base;
+$theme-font-size-small: $theme-font-size-medium - 2;
+$theme-font-size-smaller: $theme-font-size-small - 2;
+$theme-font-size-smallest: $theme-font-size-smaller - 2;
+$theme-font-size-large: $theme-font-size-medium + 2;
+$theme-font-size-larger: $theme-font-size-large + 2;
+$theme-font-size-largest: $theme-font-size-larger + 2;
+
+$theme-heading-size-base: 32px;
+$theme-heading-size-medium: $theme-heading-size-base;
+$theme-heading-size-small: $theme-heading-size-medium - 5;
+$theme-heading-size-smaller: $theme-heading-size-small - 5;
+$theme-heading-size-smallest: $theme-heading-size-smaller - 5;
+$theme-heading-size-large: $theme-heading-size-medium + 5;
+$theme-heading-size-larger: $theme-heading-size-large + 5;
+$theme-heading-size-largest: $theme-heading-size-larger + 5;
+
+$scale-large: 1.1rem;
+$scale-larger: 1.3rem;
+
+$opacity-most: 1;
+$opacity-medium: .4;
+$opacity-very: .6;
+$opacity-dull: .15;
+$opacity-mostly: .8;
+
+$transition-fast: .1s;
+$transition-medium: .2s;
+$transition-longest: 1s; // must be less than duration in SlideshowHandler

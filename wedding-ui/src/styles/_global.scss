@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+@import "variables";
+
+html,
+body {
+  font-size: $theme-font-size-base;
+}
+
+body {
+  font-family: $theme-font-primary;
+}
+
+ul, ol, li, p, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, button, a, input {
+  transition: all linear $transition-medium;
+}
+
+h1 {
+  font-family: $theme-font-accent;
+  font-weight: bold;
+  font-size: $theme-heading-size-small;
+  text-shadow: rgba($theme-global-darkest, $opacity-medium) $sizing-smallest $sizing-smallest $sizing-medium;
+}
+
+h2 {
+  font-family: $theme-font-accent;
+  font-size: $theme-heading-size-larger;
+  text-shadow: rgba($theme-global-lightest, $opacity-most) $sizing-smaller $sizing-smaller $sizing-smallest;
+  font-weight: normal;
+}
+
+h3 {
+  font-family: $theme-font-secondary;
+  color: $theme-global-lightest;
+  font-size: $theme-heading-size-large;
+  text-shadow: rgba($theme-global-darkest, $opacity-mostly) $sizing-smaller $sizing-smaller $sizing-smallest;
+  font-weight: bold;
+}
+
+h4,
+h5,
+h6 {
+  font-family: $theme-font-secondary;
+  color: $theme-global-lightest;
+  font-size: $theme-heading-size-medium;
+  text-shadow: rgba($theme-global-darkest, $opacity-medium) $sizing-smaller $sizing-smaller $sizing-smallest;
+  font-weight: normal;
+}
+
+h5 {
+  font-size: $theme-heading-size-small;
+}
+
+h6 {
+  font-size: $theme-heading-size-smaller;
+}
+
+.jna--section-title {
+  margin-bottom: $spacing-large;
+  text-align: center;
+}
+
+.jna--theme-btn {
+  padding: $spacing-medium $spacing-large;
+  width: 100%;
+}
+
+.jna--theme-intro-btn {
+  @extend .jna--theme-btn;
+
+  background: $theme-global-primary-dark;
+  border: $theme-global-primary-dark;
+  color: $theme-global-lightest;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: $theme-global-primary;
+    color: $theme-global-primary-dark;
+    box-shadow: $theme-global-lightest 0 0 $sizing-medium;
+  }
+}
+
+
+.jna--theme-wedding-btn {
+  @extend .jna--theme-btn;
+
+  background: $theme-global-secondary-dark;
+  border: $theme-global-secondary-dark;
+  color: $theme-global-lightest;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: $theme-global-lightest;
+    color: $theme-global-secondary-dark;
+    box-shadow: $theme-global-lightest 0 0 $sizing-medium;
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  h1 {
+    font-size: $theme-heading-size-large;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  h1 {
+    font-size: $theme-heading-size-largest;
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  h1 {
+  }
+}
+

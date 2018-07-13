@@ -1,0 +1,49 @@
+@import "variables";
+
+.jna--nav {
+  color: $theme-global-lightest;
+  background: $theme-global-primary-dark url(assets/images/nav-background.png) fixed;
+  padding: $spacing-large $spacing-large $spacing-smallest $spacing-large;
+  top: 0;
+  left: 0;
+  z-index: 999999;
+  border-bottom: $sizing-small solid $theme-global-primary;
+  width: 100%;
+  height: 4rem;
+  position: fixed;
+
+  .jna--nav-menu-description {
+    z-index: 100;
+    position: relative;
+    cursor: pointer;
+
+    i {
+      margin-right: $spacing-small;
+    }
+  }
+
+  .jna--nav-menu {
+    max-height: 0;
+    z-index: 99;
+    overflow: hidden;
+    transition: all linear $transition-medium;
+    margin-top: -1.5rem;
+    background: $theme-global-primary-dark;
+    border-bottom: $sizing-small solid transparent;
+
+    &.jna--nav-menu-open {
+      max-height: 500px;
+      border-bottom: $sizing-small solid $theme-global-primary;
+    }
+  }
+
+  a,
+  a:link,
+  a:visited {
+    line-height: 2rem;
+    text-align: center;
+    color: $theme-global-lightest;
+    font-weight: bold;
+    font-size: $theme-font-size-medium;
+  }
+}

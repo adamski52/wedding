@@ -1,0 +1,13 @@
+@import "variables";
+
+.jna--footer {
+  color: $theme-global-darker;
+  background: $theme-global-lightest url(assets/images/footer-background.png) fixed;
+  box-shadow: $theme-global-section-shadow;
+  padding: $spacing-large;
+  text-align: center;
+
+  h1 {
+    margin: 0;
+  }
+}

@@ -1,0 +1,14 @@
+@import "variables";
+
+.jna--registry {
+  color: $theme-global-darker;
+  background: $theme-global-primary url(assets/images/registry-background.png) fixed;
+  box-shadow: $theme-global-section-shadow;
+  padding: $spacing-larger $spacing-large;
+
+  @include make-links($theme-global-primary-dark, $theme-global-primary);
+
+  p {
+    margin-top: $spacing-large;
+  }
+}
