@@ -1,17 +1,10 @@
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const proxy = require('http-proxy-middleware');
-const app = express();
-
-
-app.use('/api', proxy({
-    target: 'http://localhost:9090',
-    onProxyReq: function(proxyReq, req, res) {
-        proxyReq.setHeader('Content-Type', 'application/json');
-    }
-}));
+var express = require('express'),
+    path = require('path'),
+    bodyParser = require('body-parser'),
+    cors = require('cors'),
+    proxy = require('http-proxy-middleware'),
+    app = express(),
+    port = 9000;
 
 app.use(cors());
 
@@ -21,4 +14,8 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.listen(5000);
+app.use('/api/', proxy({
+    target: 'http://api:9090/'
+}));
+
+app.listen(port);

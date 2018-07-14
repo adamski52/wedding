@@ -9,15 +9,23 @@ services:
       - "5432:5432"
     volumes:
       - ./data:/var/lib/postgresql/data
+    networks:
+      - backend
   api:
     image: wedding-api
-    depends_on:
-      - db
     env_file:
       - .env
     ports:
       - "9090:9090"
+    networks:
+      - backend
   ui:
     image: wedding-ui
     ports:
       - "9000:9000"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
