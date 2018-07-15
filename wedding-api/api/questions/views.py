@@ -7,7 +7,7 @@ from api.views import BaseViewSet
 
 class QuestionViewSet(BaseViewSet):
     permission_classes = [
-        permissions.IsAuthenticated
+        permissions.AllowAny #todo: should only be allowed to POST if not auth'd
     ]
 
     serializers = {

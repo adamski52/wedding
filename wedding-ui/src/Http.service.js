@@ -2,7 +2,7 @@ import fetch from "cross-fetch";
 
 class HttpService {
     // static APIBase = (window.location.hostname === "localhost" ? "http://localhost:8080" : "") + "/api";
-    static APIBase = "http://www.jonathanadamski.com/marryingmegan/api";
+    static APIBase = "/api";
 
     static post(url, data) {
         return fetch(HttpService.APIBase + url, {

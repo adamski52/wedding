@@ -58,6 +58,7 @@ class App extends Component {
                    <div className="col-lg-12 col-xs-12">
                        <WeddingContainer
                            getElementsFromItems={this.props.getElementsFromItems}
+                           onSubmit={this.props.onSubmit}
                            onChange={this.props.onChange}
                            questionsForm={this.props.questionsForm}
                            rsvpForm={this.props.rsvpForm}

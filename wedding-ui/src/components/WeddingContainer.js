@@ -16,7 +16,7 @@ class WeddingContainer extends Component {
                             return this.props.onChange(value, field, RSVPFormHandler);
                         }}
                         onSubmit={(e, fields) => {
-                            return this.props.onSubmit(e, fields, RSVPFormHandler, "/rsvp");
+                            return this.props.onSubmit(e, fields, RSVPFormHandler, "/rsvps/");
                         }}
                         submitText={this.props.rsvpForm.submitText}
                         title={this.props.rsvpForm.title}
@@ -50,7 +50,7 @@ class WeddingContainer extends Component {
                             return this.props.onChange(value, field, QuestionFormHandler);
                         }}
                         onSubmit={(e, fields) => {
-                            return this.props.onSubmit(e, fields, QuestionFormHandler, "/questions");
+                            return this.props.onSubmit(e, fields, QuestionFormHandler, "/questions/");
                         }}
                         submitText={this.props.questionsForm.submitText}
                         title={this.props.questionsForm.title}
