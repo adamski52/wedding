@@ -17,33 +17,23 @@ jobs:
       - chmod 600 /tmp/deploy_rsa
       - ssh-add /tmp/deploy_rsa
 
-    - stage: build ui
+    - stage: build/push ui
       on:
         branch: feature/travis
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t $DOCKER_USERNAME/wedding-ui wedding-ui
       - docker tag $DOCKER_USERNAME/wedding-ui $DOCKER_USERNAME/wedding-ui:$(date +%Y-%m-%d)
+      - docker push $DOCKER_USERNAME/wedding-ui
 
-    - stage: build api
+    - stage: buil/push api
       on:
         branch: feature/travis
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t $DOCKER_USERNAME/wedding-api wedding-api
       - docker tag $DOCKER_USERNAME/wedding-api $DOCKER_USERNAME/wedding-api:$(date +%Y-%m-%d)
-
-    - stage: push api
-      on:
-        branch: feature/travis
-      script:
       - docker push $DOCKER_USERNAME/wedding-api
-
-    - stage: push ui
-      on:
-        branch: feature/travis
-      script:
-      - docker push $DOCKER_USERNAME/wedding-ui
 
     - stage: update host
       on:
