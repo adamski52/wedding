@@ -8,15 +8,6 @@ addons:
 
 jobs:
   include:
-    - stage: setup remote auth
-      on:
-        branch: feature/travis
-      script:
-      - openssl aes-256-cbc -K $encrypted_38ced7ab948c_key -iv $encrypted_38ced7ab948c_iv -in deploy_rsa.enc -out /tmp/deploy_rsa -d
-      - eval "$(ssh-agent -s)"
-      - chmod 600 /tmp/deploy_rsa
-      - ssh-add /tmp/deploy_rsa
-
     - stage: build/push ui
       on:
         branch: feature/travis
@@ -39,4 +30,8 @@ jobs:
       on:
         branch: feature/travis
       script:
+      - openssl aes-256-cbc -K $encrypted_38ced7ab948c_key -iv $encrypted_38ced7ab948c_iv -in deploy_rsa.enc -out /tmp/deploy_rsa -d
+      - eval "$(ssh-agent -s)"
+      - chmod 600 /tmp/deploy_rsa
+      - ssh-add /tmp/deploy_rsa
       - ssh -i /tmp/deploy_rsa ubuntu@jonathanadamski.com "sudo systemctl service jna-wedding restart"
