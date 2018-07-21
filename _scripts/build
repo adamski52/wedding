@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# use me to build the latest from github into docker images.
+docker build -t adamski52/wedding-api wedding-api
+docker build -t adamski52/wedding-ui wedding-ui

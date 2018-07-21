@@ -7,6 +7,8 @@ Requires=docker.service
 TimeoutStartSec=0
 Restart=always
 ExecStartPre=-/usr/bin/docker-compose -f /var/www/repos/jna-wedding/docker-compose.yml down
+ExecStartPre=/usr/bin/docker pull adamski52/wedding-api
+ExecStartPre=/usr/bin/docker pull adamski52/wedding-ui
 ExecStart=/usr/bin/docker-compose -f /var/www/repos/jna-wedding/docker-compose.yml up
 
 [Install]
