@@ -1,4 +1,5 @@
 sudo: required
+language: bash
 addons:
   ssh_known_hosts: jonathanadamski.com
   apt:
@@ -22,13 +23,7 @@ jobs:
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t $DOCKER_USERNAME/wedding-ui wedding-ui
-      - docker tag $DOCKER_USERNAME/wedding-ui:$(date +%Y-%m-%d)
-
-    - stage: push ui
-      on:
-        branch: feature/travis
-      script:
-      - docker push $DOCKER_USERNAME/wedding-ui
+      - docker tag $DOCKER_USERNAME/wedding-ui $DOCKER_USERNAME/wedding-ui:$(date +%Y-%m-%d)
 
     - stage: build api
       on:
@@ -36,13 +31,19 @@ jobs:
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t $DOCKER_USERNAME/wedding-api wedding-api
-      - docker tag $DOCKER_USERNAME/wedding-api:$(date +%Y-%m-%d)
+      - docker tag $DOCKER_USERNAME/wedding-api $DOCKER_USERNAME/wedding-api:$(date +%Y-%m-%d)
 
     - stage: push api
       on:
         branch: feature/travis
       script:
       - docker push $DOCKER_USERNAME/wedding-api
+
+    - stage: push ui
+      on:
+        branch: feature/travis
+      script:
+      - docker push $DOCKER_USERNAME/wedding-ui
 
     - stage: update host
       on:
