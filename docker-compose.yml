@@ -12,7 +12,7 @@ services:
     networks:
       - backend
   api:
-    image: wedding-api
+    image: adamski52/wedding-api
     env_file:
       - .env
     ports:
@@ -20,7 +20,7 @@ services:
     networks:
       - backend
   ui:
-    image: wedding-ui
+    image: adamski52/wedding-ui
     ports:
       - "9000:9000"
     networks:
