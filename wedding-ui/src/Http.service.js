@@ -12,7 +12,11 @@ class HttpService {
             },
             body: JSON.stringify(data)
         }).then((response) => {
-            return response.json();
+            if(response.ok) {
+                return response.json();
+            }
+
+            throw response.status + " " + response.statusText;
         });
     }
 }

@@ -1,10 +1,11 @@
-import QuestionFormHandler from "./QuestionFormHandler";
-
 class RSVPFormHandler {
     static INITIAL_STATE = {
         title: "RSVP",
         submitText: "RSVP",
         isSending: false,
+        isSuccess: false,
+        isAttending: undefined,
+        isError: false,
         name: {
             dataType: "text",
             value: "",
@@ -100,8 +101,6 @@ class RSVPFormHandler {
         }
     };
 
-    static ON_CHANGE = "ON_RSVP_CHANGE";
-
     // TODO:  This isn't pure and should probably live in the reducer anyway.
     static onChange(value, field) {
         if(field.dataType === "multiselect") {
@@ -131,21 +130,28 @@ class RSVPFormHandler {
         };
     }
 
+    static ON_CHANGE = "ON_RSVP_CHANGE";
     static ON_TRANSMIT_START = "ON_RSVP_TRANSMIT_START";
     static ON_TRANSMIT_SUCCESS = "ON_RSVP_TRANSMIT_SUCCESS";
     static ON_TRANSMIT_ERROR = "ON_RSVP_TRANSMIT_ERROR";
+    static ON_TRY_AGAIN = "ON_RSVP_TRY_AGAIN";
+
 
     static pushToPayload(payload, field) {
-        if(field.value && field.value.length > 0) {
-            payload.push({
-                title: field.title,
-                name: field.value
-            });
+        if(!field.value) {
+            return;
         }
+
+        if(typeof field.value === "object") {
+            payload[field.name] = field.value.join("\n");
+            return;
+        }
+
+        payload[field.name] = field.value;
     }
 
     static onSubmitStart(fields) {
-        let payload = [];
+        let payload = {};
 
         RSVPFormHandler.pushToPayload(payload, fields.name);
         RSVPFormHandler.pushToPayload(payload, fields.attendance);
@@ -164,6 +170,12 @@ class RSVPFormHandler {
         };
     }
 
+    static onTryAgain() {
+        return {
+            type: RSVPFormHandler.ON_TRY_AGAIN
+        };
+    }
+
     static onSubmitSuccess(json) {
         return {
             type: RSVPFormHandler.ON_TRANSMIT_SUCCESS,
@@ -171,10 +183,9 @@ class RSVPFormHandler {
         };
     }
 
-    static onSubmitError(error) {
+    static onSubmitError() {
         return {
-            type: RSVPFormHandler.ON_TRANSMIT_ERROR,
-            error: error
+            type: RSVPFormHandler.ON_TRANSMIT_ERROR
         };
     }
 
@@ -183,24 +194,44 @@ class RSVPFormHandler {
             case RSVPFormHandler.ON_CHANGE:
                 return {
                     ...state,
+                    isAttending: undefined,
+                    isSending: false,
+                    isError: false,
+                    isSuccess: false,
                     [action.field.name]: action.field
                 };
 
             case RSVPFormHandler.ON_TRANSMIT_START:
                 return {
                     ...state,
-                    isSending: true
+                    isAttending: undefined,
+                    isSending: true,
+                    isError: false,
+                    isSuccess: false
                 };
 
             case RSVPFormHandler.ON_TRANSMIT_ERROR:
                 return {
                     ...state,
-                    isSending: false
+                    isAttending: undefined,
+                    isSending: false,
+                    isError: true,
+                    isSuccess: false
                 };
 
             case RSVPFormHandler.ON_TRANSMIT_SUCCESS:
                 return {
-                    ...QuestionFormHandler.INITIAL_STATE
+                    ...RSVPFormHandler.INITIAL_STATE,
+                    isAttending: action.json.attendance === RSVPFormHandler.INITIAL_STATE.attendance.options[0],
+                    isSuccess: true
+                };
+
+            case RSVPFormHandler.ON_TRY_AGAIN:
+                return {
+                    ...state,
+                    isError: false,
+                    isSuccess: false,
+                    isAttending: undefined
                 };
 
             default:

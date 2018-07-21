@@ -9,14 +9,14 @@ import RegistryContainer from "./RegistryContainer";
 import FooterContainer from "./FooterContainer";
 import HttpService from "../Http.service";
 import LoaderContainer from "./LoaderContainer";
-import ErrorContainer from "./ErrorContainer";
-import ErrorHandler from "../handlers/ErrorHandler";
 import WeddingContainer from "./WeddingContainer";
 import SlideshowContainer from "./SlideshowContainer";
 import SlideshowHandler from "../handlers/SlideshowHandler";
 import FunFactsHandler from "../handlers/FunFactsHandler";
 import WhatToExpectHandler from "../handlers/WhatToExpectHandler";
+import RSVPFormHandler from "../handlers/RSVPFormHandler";
 import NavHandler from "../handlers/NavHandler";
+import QuestionFormHandler from "../handlers/QuestionFormHandler";
 
 class App extends Component {
     render() {
@@ -24,11 +24,6 @@ class App extends Component {
             <div className="container-fluid jna--app">
                 <LoaderContainer
                     isSending={this.props.questionsForm.isSending || this.props.rsvpForm.isSending}
-                />
-
-                <ErrorContainer
-                    onRemoveError={this.props.onRemoveError}
-                    items={this.props.errors.errors}
                 />
 
                 <div id="nav" className="row jna--nav">
@@ -59,7 +54,10 @@ class App extends Component {
                        <WeddingContainer
                            getElementsFromItems={this.props.getElementsFromItems}
                            onSubmit={this.props.onSubmit}
+                           rsvpScrollTo={this.props.nav.wedding.anchor}
                            onChange={this.props.onChange}
+                           onTryAgain={this.props.onTryAgain}
+                           onQuestionTryAgain={this.props.onQuestionTryAgain}
                            questionsForm={this.props.questionsForm}
                            rsvpForm={this.props.rsvpForm}
                            intro={this.props.intro}
@@ -167,10 +165,6 @@ export default connect(
                 return dispatch(handler.onChange(value, field));
             },
 
-            onRemoveError: (error) => {
-                return dispatch(ErrorHandler.removeError(error));
-            },
-
             onNextSlide: () => {
                 return dispatch(SlideshowHandler.onNextSlide());
             },
@@ -191,21 +185,26 @@ export default connect(
                 return dispatch(NavHandler.onToggle());
             },
 
+            onTryAgain: () => {
+                return dispatch(RSVPFormHandler.onTryAgain());
+            },
+
+            onQuestionTryAgain: () => {
+                return dispatch(QuestionFormHandler.onTryAgain());
+            },
+
             onSubmit: (e, fields, handler, url) => {
                 e.preventDefault();
 
                 let action = handler.onSubmitStart(fields);
                 dispatch(action);
 
-                dispatch(ErrorHandler.removeAll());
-
                 return HttpService.post(url, action.payload)
                     .then((json) => {
                         dispatch(handler.onSubmitSuccess(json));
                         return json;
                     }).catch((error) => {
-                        dispatch(handler.onSubmitError(error));
-                        dispatch(ErrorHandler.addError("Failed to submit.  Please try again."));
+                        dispatch(handler.onSubmitError());
                         return error;
                     });
             }

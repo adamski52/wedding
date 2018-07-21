@@ -3,8 +3,7 @@ from ..models import BaseModel
 
 class RSVP(BaseModel):
     name = models.CharField(
-        max_length=100,
-        unique=True
+        max_length=100
     )
 
     attendance = models.CharField(

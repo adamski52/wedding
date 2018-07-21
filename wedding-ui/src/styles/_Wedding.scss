@@ -8,6 +8,36 @@
   padding: $spacing-larger $spacing-smallest;
 
   @include make-links($theme-global-secondary-darker, $theme-global-secondary);
+
+  .jna--form-success {
+    text-align: center;
+    background: $theme-global-secondary-dark;
+    color: $theme-global-lightest;
+    padding: $spacing-large;
+    border-radius: $sizing-medium;
+    margin: $spacing-medium $spacing-smallest;
+
+    p {
+      margin: $spacing-large $spacing-smallest;
+    }
+  }
+
+  .jna--form-error {
+    text-align: center;
+    background: $theme-global-secondary-darker;
+    color: $theme-global-secondary;
+    padding: $spacing-large;
+    border-radius: $sizing-medium;
+    margin: $spacing-medium $spacing-smallest;
+
+    p {
+      margin: $spacing-large $spacing-smallest;
+    }
+
+    h3 {
+      color: $theme-global-secondary;
+    }
+  }
 }
 
 .jna--wedding-sidebar,
@@ -34,4 +64,8 @@
 
 .jna--wedding-sidebar-where {
   margin-top: $spacing-large;
+}
+
+.jna--form-error-button {
+  width: auto;
 }

@@ -8,7 +8,6 @@ import WhatToExpectHandler from "./WhatToExpectHandler";
 import RegistryHandler from "./RegistryHandler";
 import RSVPFormHandler from "./RSVPFormHandler";
 import FooterHandler from "./FooterHandler";
-import ErrorHandler from "./ErrorHandler";
 import SlideshowHandler from "./SlideshowHandler";
 
 class AppHandler {
@@ -22,7 +21,6 @@ class AppHandler {
         registry: RegistryHandler.reducer,
         rsvpForm: RSVPFormHandler.reducer,
         footer: FooterHandler.reducer,
-        errors: ErrorHandler.reducer,
         slideshow: SlideshowHandler.reducer
     });
 }

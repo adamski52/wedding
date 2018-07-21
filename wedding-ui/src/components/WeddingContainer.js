@@ -12,10 +12,13 @@ class WeddingContainer extends Component {
 
                 <div className="col-xs-12">
                     <RSVPFormContainer
+                        onTryAgain={this.props.onTryAgain}
                         onChange={(value, field) => {
                             return this.props.onChange(value, field, RSVPFormHandler);
                         }}
                         onSubmit={(e, fields) => {
+                            // success and failure both shrink the form, so re-scroll to #rsvp upon submit
+                            window.location.href = this.props.rsvpScrollTo;
                             return this.props.onSubmit(e, fields, RSVPFormHandler, "/rsvps/");
                         }}
                         submitText={this.props.rsvpForm.submitText}
@@ -45,6 +48,7 @@ class WeddingContainer extends Component {
 
                 <div className="col-sm-6 col-xs-12">
                     <QuestionFormContainer
+                        onTryAgain={this.props.onQuestionTryAgain}
                         itemRenderer={this.props.getElementsFromItems}
                         onChange={(value, field) => {
                             return this.props.onChange(value, field, QuestionFormHandler);

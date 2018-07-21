@@ -4,8 +4,7 @@ from ..models import BaseModel
 
 class Question(BaseModel):
     name = models.CharField(
-        max_length=100,
-        unique=True
+        max_length=100
     )
 
     email = models.CharField(
@@ -13,6 +12,5 @@ class Question(BaseModel):
     )
 
     message = models.CharField(
-        max_length=2000,
-        null=True
+        max_length=8000
     )

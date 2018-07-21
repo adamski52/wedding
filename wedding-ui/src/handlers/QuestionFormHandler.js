@@ -4,6 +4,8 @@ class QuestionFormHandler {
         subtitle: "Ask Megan and Jon",
         submitText: "Submit",
         isSending: false,
+        isError: false,
+        isSuccess: false,
         name: {
             dataType: "text",
             value: "",
@@ -64,17 +66,14 @@ class QuestionFormHandler {
     static ON_TRANSMIT_START = "ON_QUESTION_TRANSMIT_START";
     static ON_TRANSMIT_SUCCESS = "ON_QUESTION_TRANSMIT_SUCCESS";
     static ON_TRANSMIT_ERROR = "ON_QUESTION_TRANSMIT_ERROR";
+    static ON_TRY_AGAIN = "ON_QUESTION_TRY_AGAIN";
+
     static onSubmitStart(fields) {
-        let payload = [{
-            title: fields.name.title,
-            name: fields.name.value
-        }, {
-            title: fields.email.title,
-            name: fields.email.value
-        }, {
-            title: fields.message.title,
-            name: fields.message.value
-        }];
+        let payload = {
+            name: fields.name.value,
+            email: fields.email.value,
+            message: fields.message.value
+        };
 
         return {
             type: QuestionFormHandler.ON_TRANSMIT_START,
@@ -89,10 +88,15 @@ class QuestionFormHandler {
         };
     }
 
-    static onSubmitError(error) {
+    static onSubmitError() {
         return {
-            type: QuestionFormHandler.ON_TRANSMIT_ERROR,
-            error: error
+            type: QuestionFormHandler.ON_TRANSMIT_ERROR
+        };
+    }
+
+    static onTryAgain() {
+        return {
+            type: QuestionFormHandler.ON_TRY_AGAIN
         };
     }
 
@@ -107,16 +111,28 @@ class QuestionFormHandler {
             case QuestionFormHandler.ON_TRANSMIT_START:
                 return {
                     ...state,
-                    isSending: true
+                    isSending: true,
+                    isError: false,
+                    isSuccess: false
                 };
 
             case QuestionFormHandler.ON_TRANSMIT_ERROR:
                 return {
                     ...state,
-                    isSending: false
+                    isSending: false,
+                    isError: true,
+                    isSuccess: false
                 };
 
             case QuestionFormHandler.ON_TRANSMIT_SUCCESS:
+                return {
+                    ...state,
+                    isSending: true,
+                    isError: false,
+                    isSuccess: false
+                };
+
+            case QuestionFormHandler.ON_TRY_AGAIN:
                 return {
                     ...QuestionFormHandler.INITIAL_STATE
                 };
