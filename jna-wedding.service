@@ -1,0 +1,15 @@
+[Unit]
+Description=JNA Wedding Instance
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop jna-wedding
+ExecStartPre=-/usr/bin/docker rm jna-wedding
+ExecStartPre=/usr/bin/docker pull jenkins/jenkins:2.133-alpine
+ExecStart=/usr/bin/docker run -p 5000:5000 -p 9876:8080 -v jenkins_home:/home/ubuntu/jenkins_home --rm --name jna-jenkins jenkins/jenkins:2.133-alpine
+
+[Install]
+WantedBy=multi-user.target
