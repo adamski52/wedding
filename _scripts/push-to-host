@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# run me to restart the host service.  host service is responsible for the pulling and up'ing.
-
-ssh -i /tmp/deploy_rsa ubuntu@jonathanadamski.com "sudo systemctl service jna-wedding restart"
