@@ -6,25 +6,19 @@ For use on host machine only.  Keeps minimal footprint for when source is not ne
 
 ### Clone repo on host machine
 ```
+cd /var/www/repos
 git clone git@github.com:adamski52/wedding.git
 ```
 
 ### Checkout `host` branch
 ```
-git fetch -va
+cd /var/www/repos/wedding
 git checkout host
-```
-
-### Setup service
-```
-sudo cp /var/www/repos/jna-wedding/jna-wedding.service /etc/systemd/system
-sudo systemctl enable jna-wedding
-sudo systemctl start jna-wedding
 ```
 
 ### Setup .env
 ```
-vi /var/www/repos/jna-wedding/.env
+vi /var/www/repos/wedding/.env
 ```
 
 Required values are:
@@ -35,11 +29,18 @@ Required values are:
 * DB_PORT
 * API_SECRET_KEY
 
+### Setup service
+```
+sudo cp /var/www/repos/wedding/jna-wedding.service /etc/systemd/system
+sudo systemctl enable jna-wedding
+sudo systemctl start jna-wedding
+```
+
 
 ### Setup cron job
 ```
-cp /var/www/repos/jna-wedding/cron /etc/cron.daily/jna-wedding
-chmod 755 /etc/cron.daily/jna-wedding
+sudo cp /var/www/repos/wedding/cron /etc/cron.daily/jna-wedding
+sudo chmod 755 /etc/cron.daily/jna-wedding
 crontab -e
 ```
 

@@ -6,8 +6,8 @@ Requires=docker.service
 [Service]
 TimeoutStartSec=0
 Restart=always
-ExecStartPre=-/usr/bin/docker-compose -f /var/www/repos/jna-wedding/docker-compose.yml down
-ExecStart=/usr/bin/docker-compose -f /var/www/repos/jna-wedding/docker-compose.yml up
+ExecStartPre=-/usr/bin/docker-compose -f /var/www/repos/wedding/docker-compose.yml down
+ExecStart=/usr/bin/docker-compose -f /var/www/repos/wedding/docker-compose.yml up
 
 [Install]
 WantedBy=multi-user.target
