@@ -5,7 +5,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {Provider} from "react-redux";
 import thunkMiddleware from "redux-thunk";
-import {createLogger} from "redux-logger";
+//import {createLogger} from "redux-logger";
 import {createStore, applyMiddleware} from "redux";
 import AppHandler from "./handlers/AppHandler";
 
@@ -17,8 +17,8 @@ import { unregister } from './registerServiceWorker';
 
 let store = createStore(AppHandler.reducer,
     applyMiddleware(
-        thunkMiddleware,
-        createLogger()
+        thunkMiddleware
+//        createLogger()
     )
 );
 
