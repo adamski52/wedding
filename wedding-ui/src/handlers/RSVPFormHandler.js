@@ -222,6 +222,7 @@ class RSVPFormHandler {
             case RSVPFormHandler.ON_TRANSMIT_SUCCESS:
                 return {
                     ...RSVPFormHandler.INITIAL_STATE,
+                    isSending: false,
                     isAttending: action.json.attendance === RSVPFormHandler.INITIAL_STATE.attendance.options[0],
                     isSuccess: true
                 };
@@ -229,6 +230,7 @@ class RSVPFormHandler {
             case RSVPFormHandler.ON_TRY_AGAIN:
                 return {
                     ...state,
+                    isSending: false,
                     isError: false,
                     isSuccess: false,
                     isAttending: undefined

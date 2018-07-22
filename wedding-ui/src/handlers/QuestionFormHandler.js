@@ -127,7 +127,7 @@ class QuestionFormHandler {
             case QuestionFormHandler.ON_TRANSMIT_SUCCESS:
                 return {
                     ...state,
-                    isSending: true,
+                    isSending: false,
                     isError: false,
                     isSuccess: false
                 };
