@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
 });
 
 app.use('/api/', proxy({
-    target: 'http://api:9090/'
+    target: 'http://api:9091/'
 }));
 
 app.listen(port);
