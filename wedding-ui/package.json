@@ -2,6 +2,7 @@
   "name": "jna-wedding",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://jonathanadamski.com/MarryingMegan",
   "dependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
