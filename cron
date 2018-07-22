@@ -3,4 +3,5 @@
 sudo docker pull adamski52/wedding-api
 sudo docker pull adamski52/wedding-ui
 sudo docker pull postgres:10.4
+sudo systemctl daemon-reload
 sudo systemctl restart jna-wedding
