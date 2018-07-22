@@ -50,6 +50,7 @@ Required values are:
 ### Setup service
 ```
 sudo cp /var/www/repos/wedding/jna-wedding.service /etc/systemd/system
+sudo systemctl daemon-reload
 sudo systemctl enable jna-wedding
 sudo systemctl start jna-wedding
 ```

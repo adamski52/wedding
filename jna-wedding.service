@@ -11,3 +11,4 @@ ExecStart=/usr/local/bin/docker-compose -f /var/www/repos/wedding/docker-compose
 
 [Install]
 WantedBy=multi-user.target
+Jul 22 04:39:10 ip-172-26-14-101 bash[11572]: ERROR: for wedding_db_1  Cannot start service db: driver failed programming external connectivity on endpoint wedding_db_1 (f31e1a9c38633deb6839bb
