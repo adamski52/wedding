@@ -129,7 +129,7 @@ class QuestionFormHandler {
                     ...state,
                     isSending: false,
                     isError: false,
-                    isSuccess: false
+                    isSuccess: true
                 };
 
             case QuestionFormHandler.ON_TRY_AGAIN:
