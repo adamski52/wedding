@@ -63,7 +63,7 @@ class OurStoryHandler {
                 "She is as gumpy as a newborn deer."
             ]
         }, {
-            date: "September, 2017",
+            date: "September, 2018",
             title: "Wedding Day",
             summary: [
                 "You are here."
