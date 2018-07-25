@@ -39,7 +39,7 @@ class WhatToExpectHandler {
                 `First -- yes, our dogs will be there.`,
                 `An outdoor ceremony (weather permitting) will begin at approximately 5:00pm, led by Jenna (Megan's sister).  The ceremony will last approximately 30 minutes.  All are welcome.`,
                 `Following the ceremony, there will be a happy hour (open bar, but beer/wine only).`,
-                `Dinner will be served at approximately 6:30pm, and will include prime rib, pasta (vegetarian), potatoes and green beans.`,
+                `Dinner will be served at approximately 6:30pm, and will include roast top sirloin, penne pasta, plus sides and desserts.`,
                 `Cake cutting will be at approximately 8:00pm.`,
                 `The bar and indoor reception area is open until approximately 10:00pm.`,
                 `When departing, please be proactive about the <a href="#how-do-i-get-there">limited shuttle service and ride sharing services</a>.  <strong>You've been warned:</strong> Police in the area are omnipresent.  Really.  No, <em>really</em>-really.  Don't speed.  At all.  We're not exaggerating.  Find a ride if you're drinking.  They <strong>will</strong> stop you.`,
