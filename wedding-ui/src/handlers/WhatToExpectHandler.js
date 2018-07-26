@@ -49,7 +49,8 @@ class WhatToExpectHandler {
             answer: [
                 `A room block is setup under the <a href="http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=Lilley-Adamski%20Wedding%5Eclesh%60LAWLAWA%7CLAWLAWB%60109.00-119.00%60USD%60false%605%609/21/18%609/23/18%608/24/18&app=resvlink&stop_mobi=yes" target="_blank">Lilley-Adamski wedding at the Marriott Springhill Suites Cleveland-Solon</a>.`,
                 `All rooms are suites, with WiFi and a buffet breakfast included.`,
-                `<a href="http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=Lilley-Adamski%20Wedding%5Eclesh%60LAWLAWA%7CLAWLAWB%60109.00-119.00%60USD%60false%605%609/21/18%609/23/18%608/24/18&app=resvlink&stop_mobi=yes" target="_blank">Register online</a> to be part of our room block discount (approx $109/night).`
+                `<a href="http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=Lilley-Adamski%20Wedding%5Eclesh%60LAWLAWA%7CLAWLAWB%60109.00-119.00%60USD%60false%605%609/21/18%609/23/18%608/24/18&app=resvlink&stop_mobi=yes" target="_blank">Register online</a> to be part of our room block discount (approx $109/night).`,
+                `Deadline for booking online is August 20th. After this, call the hotel directly to request late booking.`
             ]
         }, {
             isOpen: false,
