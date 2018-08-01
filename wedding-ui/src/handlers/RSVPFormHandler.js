@@ -32,12 +32,17 @@ class RSVPFormHandler {
             required: true
         },
         rehearsal: {
-            dataType: "multiselect",
+            dataType: "singleselect",
             value: [],
+            title: "Will you be attending the BBQ On Friday, September 21?",
+            iconClass: "glyphicon glyphicon-info-sign",
+            anchor: "whats-going-on-before",
+            name: "rehearsal",
+            required: true,
             options: [
-                "I will be attending the optional BBQ on Friday, September 21."
-            ],
-            name: "rehearsal"
+                "Yes, sounds good",
+                "No, thank you"
+            ]
         },
         song: {
             dataType: "text",
@@ -52,12 +57,17 @@ class RSVPFormHandler {
             name: "guests"
         },
         hotel: {
-            dataType: "multiselect",
+            dataType: "singleselect",
             value: [],
+            title: "Are you staying at the Spring Hill Suites in Solon?",
+            name: "hotel",
+            iconClass: "glyphicon glyphicon-info-sign",
+            anchor: "where-do-i-stay",
+            required: true,
             options: [
-                "I am staying at the Spring Hill Suites"
-            ],
-            name: "hotel"
+                "Yes, I will be staying at the Spring Hill Suites",
+                "No, I don't need a hotel/will make other plans"
+            ]
         },
         shuttle: {
             dataType: "multiselect",
@@ -158,6 +168,7 @@ class RSVPFormHandler {
         RSVPFormHandler.pushToPayload(payload, fields.email);
         RSVPFormHandler.pushToPayload(payload, fields.song);
         RSVPFormHandler.pushToPayload(payload, fields.guests);
+        RSVPFormHandler.pushToPayload(payload, fields.rehearsal);
         RSVPFormHandler.pushToPayload(payload, fields.hotel);
         RSVPFormHandler.pushToPayload(payload, fields.shuttle);
         RSVPFormHandler.pushToPayload(payload, fields.shuttleToVenue);

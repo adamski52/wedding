@@ -83,6 +83,7 @@ class WhatToExpectHandler {
     };
 
     static ON_TOGGLE = "WHAT_TO_EXPECT_TOGGLE";
+    static ON_OPEN = "WHAT_TO_EXPECT_OPEN";
     static onToggle(item) {
         return {
             type: WhatToExpectHandler.ON_TOGGLE,
@@ -90,33 +91,56 @@ class WhatToExpectHandler {
         };
     }
 
+    static onOpen(anchor) {
+        return {
+            type: WhatToExpectHandler.ON_OPEN,
+            anchor: anchor
+        };
+    }
+
+    static getResult(state, type, anchor) {
+        let match = state.questions.find((question) => {
+            return question.anchor = anchor;
+        });
+
+        if(!match) {
+            return state;
+        }
+
+        let result = {
+            ...state
+        };
+
+        result.questions = result.questions.map((question) => {
+            if(question.anchor === anchor) {
+                return {
+                    ...question,
+                    isOpen: WhatToExpectHandler.getOpenState(type, question)
+                };
+            }
+
+            return question;
+        });
+
+        return result;
+    }
+
+    static getOpenState(type, question) {
+        if(type === WhatToExpectHandler.ON_OPEN) {
+            return true;
+        }
+
+        return !question.isOpen;
+    }
+
     static reducer(state = WhatToExpectHandler.INITIAL_STATE, action) {
         switch(action.type) {
+            case WhatToExpectHandler.ON_OPEN:
+                return WhatToExpectHandler.getResult(state, action.type, action.anchor);
+
+
             case WhatToExpectHandler.ON_TOGGLE:
-                let match = state.questions.find((question) => {
-                    return question.anchor === action.item.anchor;
-                });
-
-                if(!match) {
-                    return state;
-                }
-
-                let result = {
-                    ...state
-                };
-
-                result.questions = result.questions.map((question) => {
-                    if(question.anchor === action.item.anchor) {
-                        return {
-                            ...question,
-                            isOpen: !question.isOpen
-                        };
-                    }
-
-                    return question;
-                });
-
-                return result;
+                return WhatToExpectHandler.getResult(state, action.type, action.item.anchor);
 
             default:
                 return state;

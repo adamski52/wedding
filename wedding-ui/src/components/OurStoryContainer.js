@@ -25,7 +25,7 @@ class OurStoryContainer extends Component {
             classes.push("jna--our-story-item");
 
             return (
-                <div className="row">
+                <div key={index} className="row">
                     <div className={classes.join(" ")}>
                         <OurStoryItem
                             item={item}

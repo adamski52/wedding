@@ -11,6 +11,16 @@
     width: 100%;
     margin: 0;
   }
+
+  i.glyphicon {
+    margin: $spacing-small $spacing-smallest $spacing-smallest $spacing-small;
+    color: $theme-global-secondary-darker;
+    cursor: pointer;
+
+    &:hover {
+      color: $theme-global-secondary-dark;
+    }
+  }
 }
 
 .jna--form-group {

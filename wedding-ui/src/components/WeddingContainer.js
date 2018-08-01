@@ -13,6 +13,7 @@ class WeddingContainer extends Component {
                 <div className="col-xs-12">
                     <RSVPFormContainer
                         onTryAgain={this.props.onTryAgain}
+                        onAnchorClick={this.props.onAnchorClick}
                         onChange={(value, field) => {
                             return this.props.onChange(value, field, RSVPFormHandler);
                         }}

@@ -16,7 +16,7 @@ class HttpService {
                 return response.json();
             }
 
-            throw response.status + " " + response.statusText;
+            throw new Error(response.status + " " + response.statusText);
         });
     }
 }

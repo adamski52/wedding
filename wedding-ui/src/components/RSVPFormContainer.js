@@ -115,26 +115,28 @@ class RSVPFormContainer extends Component {
                         </div>
 
                         <div className="col-xs-12">
-                            <GenericMultiSelectFormField
+                            <GenericSingleSelectFormField
                                 field={this.props.fields.rehearsal}
                                 onChange={this.props.onChange}
+                                onAnchorClick={this.props.onAnchorClick}
                             />
                         </div>
                     </fieldset>
                 } />
 
-                <GenericFormGroup title="Where are you staying?" visible={this.isAttending()} children={
+                <GenericFormGroup visible={this.isAttending()} children={
                     <fieldset>
                         <div className="col-xs-12">
-                            <GenericMultiSelectFormField
+                            <GenericSingleSelectFormField
                                 field={this.props.fields.hotel}
                                 onChange={this.props.onChange}
+                                onAnchorClick={this.props.onAnchorClick}
                         />
                         </div>
                     </fieldset>
                 } />
 
-                <GenericFormGroup title="How are you getting back and forth?" visible={this.isStayingAtHotel()} children={
+                <GenericFormGroup visible={this.isStayingAtHotel()} children={
                     <fieldset>
                         <div className="col-xs-12">
                             <GenericMultiSelectFormField

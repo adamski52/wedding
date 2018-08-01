@@ -31,6 +31,7 @@ class FunFactsContainer extends Component {
 
             return (
                 <p
+                    key={index}
                     className={classes.join(" ")}
                     style={{
                         left: item.left,

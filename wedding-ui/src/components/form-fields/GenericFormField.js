@@ -7,8 +7,22 @@ class GenericFormField extends Component {
         }
 
         return (
-            <span className="jna--form-field-title">{this.props.field.title}</span>
+            <span className="jna--form-field-title">
+                {this.props.field.title}
+                {this.getIcon()}
+            </span>
         );
+    }
+
+    getIcon() {
+        if(this.props.field.anchor && this.props.field.iconClass) {
+            return (
+                <i onClick={(e) => {
+                    e.preventDefault();
+                    return this.props.onAnchorClick(this.props.field.anchor);
+                }} className={this.props.field.iconClass}/>
+            );
+        }
     }
 
     getSubtitle() {

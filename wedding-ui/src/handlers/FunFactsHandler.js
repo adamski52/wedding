@@ -1,17 +1,20 @@
 class FunFactsHandler {
     static INITIAL_STATE = {
         facts: [
-            "All the Adamski-Lilley dogs receive a name based on a children's story.",
-            "Jon crafts furniture.",
-            "Baloo's favorite pastime is finding 'wild' poop to roll in.",
-            "Megan favorite plant to grow is cherry tomatoes.",
-            "Franklin is a certified Therapy Dog.",
-            "Megan has wanted to hear 'At the Beginning' (Anastasia) played at her wedding since she was 10 years old.",
-            "Jon is a web developer, and started when he was 11 but hates the Internet.",
-            "Jasmine is an accomplished hunter.",
-            "Megan enjoys walking dogs.",
+            "All the Adamski-Lilley dogs receive a name based on a children's story",
+            "Jon crafts furniture",
+            "Baloo's favorite pastime is finding 'wild' poop to roll in",
+            "Megan's favorite plant to grow is cherry tomatoes",
+            "Franklin is a certified Therapy Dog",
+            "Megan has wanted to hear 'At the Beginning' (Anastasia) played at her wedding since she was 10 years old",
+            "Jon is a web developer, and started when he was 11 but hates the Internet",
+            "Jasmine is an accomplished hunter",
+            "Megan enjoys walking dogs",
+            "Jon built this site",
+            "Jon designed the Save the Dates and Invitations",
             "Jon has one sibling -- older brother Mike",
-            "Megan has three siblings -- oldest sister Tricia, older brother Brett, and younger sister Jenna"
+            "Megan has three siblings -- oldest sister Tricia, older brother Brett, and younger sister Jenna",
+            "Megan daydreams about the Pioneer Woman"
         ],
         openItem: 0,
         duration: 5000

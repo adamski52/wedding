@@ -58,6 +58,7 @@ class App extends Component {
                            onChange={this.props.onChange}
                            onTryAgain={this.props.onTryAgain}
                            onQuestionTryAgain={this.props.onQuestionTryAgain}
+                           onAnchorClick={this.props.onAnchorClick}
                            questionsForm={this.props.questionsForm}
                            rsvpForm={this.props.rsvpForm}
                            intro={this.props.intro}
@@ -207,6 +208,12 @@ export default connect(
                         dispatch(handler.onSubmitError());
                         return error;
                     });
+            },
+
+            onAnchorClick: (anchor) => {
+                window.location.href = "#" + anchor;
+
+                return dispatch(WhatToExpectHandler.onOpen(anchor));
             }
         };
     }

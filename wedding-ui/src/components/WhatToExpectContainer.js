@@ -16,6 +16,7 @@ class WhatToExpectContainer extends Component {
 
             return (
                 <div
+                    key={index}
                     className="jna--faq-question"
                     id={item.anchor}
                 >
